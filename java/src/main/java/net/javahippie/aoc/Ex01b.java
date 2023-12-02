@@ -1,18 +1,10 @@
 package net.javahippie.aoc;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.SortedMap;
 
 public class Ex01b {
 
@@ -44,15 +36,9 @@ public class Ex01b {
 
     private static int decodeAndSumInput(String path) throws IOException {
 
-        ClassLoader classloader = Thread.currentThread().getContextClassLoader();
-        try (InputStream is = classloader.getResourceAsStream(path)) {
-            return new BufferedReader(new InputStreamReader(is))
-                    .lines()
+        return FileReader.readLines(path)
                     .map(Ex01b::replaceTextOccurrences)
                     .reduce(0, Integer::sum);
-
-        }
-
     }
 
     private static Integer replaceTextOccurrences(String input) {
